@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Операция: Лизка ❤️</title>
+
+<style>
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+body {
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  padding: 20px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: radial-gradient(circle at top, #ffb6cf, #f58eb5 55%, #e66b9b);
+
+  color: #702b49;
+
+  font-family: Arial, sans-serif;
+
+}
+
+main {
+
+  width: 100%;
+
+  max-width: 520px;
+
+  text-align: center;
+
+}
+
+.panel {
+
+  background: #fff0f6;
+
+  border: 1px solid #ffffff;
+
+  border-radius: 25px;
+
+  padding: 30px 22px;
+
+  box-shadow: 0 15px 50px #a83c6940;
+
+}
+
+.hidden {
+
+  display: none;
+
+}
+
+.kicker {
+
+  color: #d94d85;
+
+  letter-spacing: 3px;
+
+  font-size: 12px;
+
+}
+
+h1 {
+
+  color: #d94d85;
+
+  font-size: 35px;
+
+}
+
+p {
+
+  line-height: 1.6;
+
+}
+
+.emoji {
+
+  font-size: 55px;
+
+  margin: 15px;
+
+}
+
+button {
+
+  border: 0;
+
+  border-radius: 30px;
+
+  padding: 15px 23px;
+
+  background: linear-gradient(100deg, #ff8fb4, #f5b4d0);
+
+  color: #702b49;
+
+  font-weight: bold;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  margin-top: 12px;
+
+  box-shadow: 0 6px 18px #e66b9b40;
+
+  transition: 0.2s;
+
+}
+
+button:hover {
+
+  transform: translateY(-2px);
+
+}
+
+button:active {
+
+  transform: scale(.97);
+
+}
+
+.secondary {
+
+  background: #f8c5d9;
+
+  color: #702b49;
+
+}
+
+.card {
+
+  margin: 20px 0;
+
+  padding: 30px 15px;
+
+  background: #ffe0ec;
+
+  border-radius: 20px;
+
+  min-height: 150px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+}
+
+.number {
+
+  color: #d94d85;
+
+  font-weight: bold;
+
+}
+
+#reason {
+
+  font-size: 21px;
+
+  color: #702b49;
+
+}
+
+.progress {
+
+  height: 7px;
+
+  background: #f4c5d8;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  margin: 20px 0;
+
+}
+
+#bar {
+
+  height: 100%;
+
+  width: 1%;
+
+  background: linear-gradient(90deg, #ff5f9e, #e83e82);
+
+  transition: width .3s;
+
+}
+
+.small {
+
+  font-size: 13px;
+
+  color: #b66b8b;
+
+}
+
+footer {
+
+  margin-top: 20px;
+
+  color: #fff0f6;
+
+  font-size: 12px;
+
+}
+
+/* ФОТОГАЛЕРЕЯ */
+
+.gallery {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 10px;
+
+  margin: 22px 0;
+
+}
+
+.gallery img {
+
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+
+  border-radius: 15px;
+
+  box-shadow: 0 4px 12px #a83c6930;
+
+  transition: transform .2s;
+
+  cursor: pointer;
+
+}
+
+.gallery img:hover {
+
+  transform: scale(1.03);
+
+}
+
+.gallery img:last-child {
+
+  grid-column: span 2;
+
+  aspect-ratio: 16 / 9;
+
+}
+
+/* ПРОСМОТР ФОТО */
+
+#lightbox {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 100;
+
+  background: #351322ed;
+
+  display: none;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 20px;
+
+}
+
+#lightbox.active {
+
+  display: flex;
+
+}
+
+#lightbox img {
+
+  max-width: 100%;
+
+  max-height: 85vh;
+
+  object-fit: contain;
+
+  border-radius: 15px;
+
+}
+
+#lightboxClose {
+
+  position: absolute;
+
+  top: 15px;
+
+  right: 20px;
+
+  color: white;
+
+  background: transparent;
+
+  font-size: 30px;
+
+  box-shadow: none;
+
+}
+
+#photos h2 {
+
+  color: #d94d85;
+
+}
+
+@media (max-width: 380px) {
+
+  h1 {
+
+    font-size: 29px;
+
+  }
+
+  .panel {
+
+    padding: 25px 15px;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<!-- ПРИВЕТСТВИЕ -->
+
+<section class="panel" id="welcome">
+
+  <div class="kicker">🔒 ЗАКРЫТАЯ ТЕРРИТОРИЯ</div>
+
+  <div class="emoji">🗝️</div>
+
+  <h1>Так-так, Лизка...</h1>
+
+  <p>
+
+    А ты как сюда попала? 🤨<br>
+
+    Вообще-то это секретная страница.
+
+    Но раз уж ты здесь — придётся показать, что внутри.
+
+  </p>
+
+  <button onclick="openDossier()">Я просто посмотрю 👀</button>
+
+  <p class="small">Доступ разрешён только одной Лизке</p>
+
+</section>
+
+<!-- ДОСЬЕ -->
+
+<section class="panel hidden" id="dossier">
+
+  <div class="kicker">ACCESS GRANTED · ДОСЬЕ №001</div>
+
+  <div class="emoji">🕵️‍♀️</div>
+
+  <h1>Секрет раскрыт!</h1>
+
+  <p>
+
+    Поздравляем! Ты обнаружила секретный проект,
+
+    созданный одним Ромкой.
+
+  </p>
+
+  <p>
+
+    После долгих исследований выяснилось:
+
+    объект наблюдения — очень даже классная Лизка.
+
+  </p>
+
+  <button onclick="startReasons()">Перейти к уликам ❤️</button>
+
+</section>
+
+<!-- 100 ПРИЧИН -->
+
+<section class="panel hidden" id="reasons">
+
+  <div class="kicker">100 МАЛЕНЬКИХ УЛИК</div>
+
+  <h1>Причины ❤️</h1>
+
+  <p class="small">
+
+    Нажимай на кнопку — каждая карточка открывает новую причину.
+
+  </p>
+
+  <div class="progress">
+
+    <div id="bar"></div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="number" id="count">УЛИКА 01 / 100</div>
+
+    <p id="reason"></p>
+
+  </div>
+
+  <button id="next" onclick="nextReason()">
+
+    Следующая причина ✨
+
+  </button>
+
+  <p class="small" id="hint">
+
+    Не пытайся угадать все сразу 😁
+
+  </p>
+
+</section>
+
+<!-- ФОТОГАЛЕРЕЯ -->
+
+<section class="panel hidden" id="photos">
+
+  <div class="kicker">НАШИ МОМЕНТЫ ❤️</div>
+
+  <div class="emoji">📸</div>
+
+  <h1>А теперь самое интересное!</h1>
+
+  <p>
+
+    100 причин — это много, но ни одна из них
+
+    не заменит наши воспоминания.
+
+  </p>
+
+
+<div class="gallery">
+  <img src="https://drive.google.com/thumbnail?id=1B-Nl1ipMWO928rUTdINCkXHplrcSRFPO&sz=w1000" alt="Фото 1">
+  <img src="https://drive.google.com/thumbnail?id=11KQJ0PAoxFsEbFkmmN93_mRb52eWlkoK&sz=w1000" alt="Фото 2">
+  <img src="https://drive.google.com/thumbnail?id=1x0oUsUDjitojMHY1XIfpl9Q1pSfGpdJn&sz=w1000" alt="Фото 3">
+  <img src="https://drive.google.com/thumbnail?id=1Ncl83OUXH7UQw-tEMivj9EDH8tMkacpI&sz=w1000" alt="Фото 4">
+  <img src="https://drive.google.com/thumbnail?id=11ph5s5pTRiY1WZU-MEyXYsG0vkJDP19u&sz=w1000" alt="Фото 5">
+  <img src="https://drive.google.com/thumbnail?id=1ea4IIPMJwfq5ujOCRsmt0fdbhJYRPH4T&sz=w1000" alt="Фото 6">
+  <img src="https://drive.google.com/thumbnail?id=1aMvUNLWNGv6vBlXMwJ6LamfR2Uoe_xNl&sz=w1000" alt="Фото 7">
+  <img src="https://drive.google.com/thumbnail?id=16ocnhI3pWZqLNHsA93u8FYaUksuYu-Bg&sz=w1000" alt="Фото 8">
+  <img src="https://drive.google.com/thumbnail?id=1KpFeW4wo1m2yKTdPqbYYyn9HP1KLTyYk&sz=w1000" alt="Фото 9">
+  <img src="https://drive.google.com/thumbnail?id=139LYv3Jn1NzKCGvZZy8ZQQAYxD9DZ_u9&sz=w1000" alt="Фото 10">
+</div>
+
+  <h2>И это только начало… 💗</h2>
+
+  <p>
+
+    Хочу, чтобы таких фотографий у нас
+
+    было ещё очень-очень много.
+
+  </p>
+
+  <p>Спасибо за каждый наш момент.</p>
+
+  <h2>От Ромки ❤️</h2>
+
+  <button class="secondary" onclick="restart()">
+
+    Посмотреть ещё раз 🔄
+
+  </button>
+
+</section>
+
+<footer>
+
+  Секретный проект · Сделано Ромкой с ❤️
+
+</footer>
+
+</main>
+
+<!-- УВЕЛИЧЕНИЕ ФОТО -->
+
+<div id="lightbox" onclick="closePhoto()">
+
+  <button id="lightboxClose" onclick="closePhoto()">×</button>
+
+  <img id="lightboxImage" src="" alt="Увеличенное фото">
+
+</div>
+
+<script>
+
+// 100 ПРИЧИН
+
+const reasons = [
+
+"Потому что с тобой даже обычный день становится интереснее.",
+
+"Потому что ты умеешь поднять настроение одним сообщением.",
+
+"Потому что с тобой можно и серьёзно поговорить, и смеяться над ерундой.",
+
+"Потому что у тебя есть свой особенный характер.",
+
+"Потому что ты умеешь удивлять.",
+
+"Потому что ты не знала, что зелёнка не отмывается, и я до сих пор не могу с этого 😂❤",
+
+"Потому что ты иногда сама не замечаешь, насколько милая.",
+
+"Потому что с тобой время иногда летит слишком быстро.",
+
+"Потому что ты одновременно милая и вредная 😁",
+
+"Потому что ты — это ты.",
+
+"Потому что у нас появляются свои маленькие приколы.",
+
+"Потому что ты умеешь сделать момент запоминающимся.",
+
+"Потому что мне интересно, о чём ты думаешь.",
+
+"Потому что даже короткий разговор с тобой может порадовать.",
+
+"Потому что у тебя классное чувство юмора.",
+
+"Потому что ты иногда говоришь такие вещи, что я потом улыбаюсь.",
+
+"Потому что с тобой не бывает скучно.",
+
+"Потому что ты умеешь быть неожиданной.",
+
+"Потому что мне нравятся наши общие воспоминания.",
+
+"Потому что с тобой можно быть немного сумасшедшим.",
+
+"Потому что ты можешь рассмешить меня даже случайно.",
+
+"Потому что ты умеешь появляться в мыслях не вовремя 😅",
+
+"Потому что мне нравится узнавать тебя всё лучше.",
+
+"Потому что с тобой хочется делиться новостями.",
+
+"Потому что ты очень обаятельная.",
+
+"Потому что у нас есть шутки, которые поймём только мы.",
+
+"Потому что ты иногда вредничаешь — это твой стиль.",
+
+"Потому что птичка — это писка",
+
+"Потому что мне важны твои мысли.",
+
+"Потому что никто не говорит «ебучка на беззвучку».",
+
+"Потому что у тебя своя неповторимая манера общения.",
+
+"Потому что с тобой хочется придумывать всякие идеи.",
+
+"Потому что ты умеешь удивить.",
+
+"Потому что ты классная даже без повода.",
+
+"Потому что на фразу «машина» ты отвечаешь «не стенка, подвинется».",
+
+"Потому что ты можешь забыть даже текущий год",
+
+"Потому что наши разговоры всегда интересные.",
+
+"Потому что с тобой хочется создавать новые воспоминания.",
+
+"Потому что ты умеешь быть нежной и смешной.",
+
+"Потому что ты не похожа ни на кого другого.",
+
+"Потому что мне нравится твоя улыбка.",
+
+"Потому что ты умеешь делать моменты особенными.",
+
+"Потому что ты иногда смешно возмущаешься.",
+
+"Потому что у тебя есть свой неповторимый вайб.",
+
+"Потому что мне нравится наше «Ромка» и «Ебьеночек».",
+
+"Потому что ты моя любимая полторашка без крышечки.💋",
+
+"Потому что мне хочется узнавать, как прошёл твой день.",
+
+"Потому что ты умеешь быть настоящей.",
+
+"Потому что с тобой есть о чём поговорить.",
+
+"Потому что научила меня плавать, а не тонуть как топор.",
+
+"Потому что ты иногда появляешься в мыслях с какой-нибудь фразой.",
+
+"Потому что мне нравится твоя энергия.",
+
+"Потому что ты умеешь сделать настроение лучше.",
+
+"Потому что с тобой хочется смеяться чаще.",
+
+"Потому что после твоего заявления про одно очко я уже ничему не удивляюсь",
+
+"Потому что ты умеешь быть милой, даже когда не стараешься.",
+
+"Потому что у нас есть моменты, которые хочется вспоминать.",
+
+"Потому что ты единственная, кому я доверил своё лицо и косметичку.",
+
+"Потому что мне нравится проводить с тобой время.",
+
+"Потому что ты умеешь удивлять своим взглядом на вещи.",
+
+"Потому что ты иногда говоришь именно то, что нужно.",
+
+"Потому что ты умеешь быть серьёзной и смешной.",
+
+"Потому что даже если ёбом токнёт, я всё равно выберу тебя.⚡️",
+
+"Потому что с тобой хочется делиться даже глупостями.",
+
+"Потому что ты умеешь поддержать разговор.",
+
+"Потому что ты — отдельная причина улыбнуться.",
+
+"Потому что мне нравится, как мы можем дурачиться.",
+
+"Потому что ты делаешь обычные вещи интереснее.",
+
+"Потому что с тобой хочется придумывать сюрпризы.",
+
+"Потому что ты умеешь быть собой.",
+
+"Потому что мне нравится узнавать твои любимые мелочи.",
+
+"Потому что ты иногда смешнее, чем думаешь.",
+
+"Потому что у тебя есть особенное место в моих мыслях.",
+
+"Потому что твой словарный запас богат настолько, что цензура не справляется.",
+
+"Потому что с тобой хочется не торопить хорошие моменты.",
+
+"Потому что мне нравятся наши маленькие традиции.",
+
+"Потому что ты умеешь быть неожиданно заботливой.",
+
+"Потому что даже спорить с тобой иногда забавно.",
+
+"Потому что ты делаешь истории интереснее.",
+
+"Потому что мне нравится твой смех.",
+
+"Потому что ты умеешь вдохновлять на хорошие идеи.",
+
+"Потому что ты сделала из меня розововолосую модель 🎀.",
+
+"Потому что с тобой можно говорить обо всём и ни о чём.",
+
+"Потому что ты очень классная.",
+
+"Потому что мне хочется чаще видеть тебя счастливой.",
+
+"Потому что ты превращаешь случайные моменты в воспоминания.",
+
+"Потому что у тебя получается быть непредсказуемой.",
+
+"Потому что мне нравится наша история.",
+
+"Потому что ты моя любимая Лизка.",
+
+"Потому что ты иногда заставляешь меня зависнуть над ответом 😄",
+
+"Потому что с тобой хочется пробовать что-то новое.",
+
+"Потому что ты умеешь быть близким человеком.",
+
+"Потому что твои маленькие привычки делают тебя тобой.",
+
+"Потому что ты классная не только в хорошие дни.",
+
+"Потому что мне приятно знать, что ты есть.",
+
+"Потому что с тобой хочется собирать ещё больше смешных историй.",
+
+"Потому что ты — Лизка. А такой Лизки больше нет.",
+
+"И потому что все сто причин всё равно не объяснят, насколько ты классная. ❤️"
+
+];
+
+let index = 0;
+
+// ПЕРЕКЛЮЧЕНИЕ ЭКРАНОВ
+
+function show(id) {
+
+ document.querySelectorAll(".panel").forEach(panel => {
+
+  panel.classList.add("hidden");
+
+ });
+
+ document.getElementById(id).classList.remove("hidden");
+
+ window.scrollTo({
+
+  top: 0,
+
+  behavior: "smooth"
+
+ });
+
+}
+
+function openDossier() {
+
+ show("dossier");
+
+}
+
+function startReasons() {
+
+ index = 0;
+
+ show("reasons");
+
+ renderReason();
+
+}
+
+// ПОКАЗ ПРИЧИНЫ
+
+function renderReason() {
+
+ document.getElementById("count").textContent =
+
+ "УЛИКА " + String(index + 1).padStart(2,"0") +
+
+ " / " + reasons.length;
+
+ document.getElementById("reason").textContent = reasons[index];
+
+ document.getElementById("bar").style.width =
+
+ ((index + 1) / reasons.length * 100) + "%";
+
+ document.getElementById("next").textContent =
+
+ index === reasons.length - 1
+
+ ? "Посмотреть наши фото 📸"
+
+ : "Следующая причина ✨";
+
+}
+
+// СЛЕДУЮЩАЯ ПРИЧИНА
+
+function nextReason() {
+
+ if (index < reasons.length - 1) {
+
+  index++;
+
+  renderReason();
+
+ } else {
+
+  show("photos");
+
+ }
+
+}
+
+// ПЕРЕЗАПУСК
+
+function restart() {
+
+ index = 0;
+
+ show("welcome");
+
+ renderReason();
+
+}
+
+// УВЕЛИЧЕНИЕ ФОТО
+
+function openPhoto(img) {
+
+ document.getElementById("lightboxImage").src = img.src;
+
+ document.getElementById("lightbox").classList.add("active");
+
+}
+
+function closePhoto() {
+
+ document.getElementById("lightbox").classList.remove("active");
+
+}
+
+// ЗАКРЫТИЕ ФОТО ПО ESC
+
+document.addEventListener("keydown", function(event) {
+
+ if (event.key === "Escape") {
+
+  closePhoto();
+
+ }
+
+});
+
+// ПЕРВАЯ ПРИЧИНА ПРИ ЗАГРУЗКЕ
+
+renderReason();
+
+</script>
+
+</body>
+
+</html>
